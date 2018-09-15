@@ -1,0 +1,105 @@
+set
+    sum_size 5
+    script_path 'script.txt'
+    max_pictures 150
+    background_pictures 3
+    pixel_size 260.0
+    EM_gain 300.0
+    quantum_efficiency 0.9
+    camera_gain 5.625
+    electron_creation 3.65
+    pixel_threshold 7.070
+    time_threshold 0
+    wave_length 0.000000532
+    filter_error 'on'
+    filter_sigma 'on'
+    filter_xy_difference 'off'
+    count_strange_mode 'quaternion_strategy'
+    pattern_data_mode 'x_axis_pattern'
+    point_chooser 'accuracy'
+    output_file_path '..\result\compare_Pt\'
+    input_file_path '..\data\180515\'
+    time_line_mode 'central_point_selector'
+    filter_type 'square'
+    fit_function '2D_Gaussian'
+    fit_method 'Levenberg-Marquardt'
+    low_threshold 3.0
+    high_threshold 6.0
+    error_low_limit 0.25
+    error_high_limit 4.0
+    sigma_low_limit 0.25
+    sigma_high_limit 4.0
+    end
+polygon poly1 100.0 100.0 400.0 100.0 400.0 400.0 100.0 400.0
+scatter new_scatter
+    scatter_mode 'normal'
+    mark_alpha 80
+    mark_size 4
+    mark_shape 'cross'
+    scatter_bin 1
+    mark_color 'red'
+    end
+
+set
+     input_file_path '..\data\180516\'
+     end
+
+read_picture back_01_after 'boli_after_Pt_01_5nM_photo.tif'
+
+read_graph 'boli_after_Pt_01_5nM_0.05s.tif'
+    fit data_01_after1 220 230 280 280
+    time_line poly1 'time_line_poly1_01_after1.csv'
+    end
+write_molecule data_01_after1 'data_01_after1.csv'
+mark back_01_after data_01_after1 new_scatter 'mark_01_after1'
+mark back_01_after data_01_after1 new_scatter 'mark_01_after1_frames_for_check' 0 10 1
+mark back_01_after data_01_after1 new_scatter 'mark_01_after1_frames' 0 3000 100
+
+read_graph 'boli_after_Pt_01_5nM_0.05s_X1.tif'
+    fit data_01_after2 220 230 280 280
+    time_line poly1 'time_line_poly1_01_after2.csv'
+    end
+write_molecule data_01_after2 'data_01_after2.csv'
+mark back_01_after data_01_after2 new_scatter 'mark_01_after2'
+mark back_01_after data_01_after2 new_scatter 'mark_01_after2_frames_for_check' 0 10 1
+mark back_01_after data_01_after2 new_scatter 'mark_01_after2_frames' 0 3000 100
+
+read_graph 'boli_after_Pt_01_5nM_0.05s_X2.tif'
+    fit data_01_after3 220 230 280 280
+    time_line poly1 'time_line_poly1_01_after3.csv'
+    end
+write_molecule data_01_after3 'data_01_after3.csv'
+mark back_01_after data_01_after3 new_scatter 'mark_01_after3'
+mark back_01_after data_01_after3 new_scatter 'mark_01_after3_frames_for_check' 0 10 1
+mark back_01_after data_01_after3 new_scatter 'mark_01_after3_frames' 0 1000 100
+
+read_picture back_06_after 'boli_after_Pt_06_5nM_photo.tif'
+
+read_graph 'boli_after_Pt_06_5nM_0,05s.tif'
+    fit data_06_after1 250 150 390 270
+    time_line poly1 'time_line_poly1_06_after1.csv'
+    end
+write_molecule data_06_after1 'data_06_after1.csv'
+mark back_06_after data_06_after1 new_scatter 'mark_06_after1'
+mark back_06_after data_06_after1 new_scatter 'mark_06_after1_frames_for_check' 0 10 1
+mark back_06_after data_06_after1 new_scatter 'mark_06_after1_frames' 0 3000 100
+
+read_graph 'boli_after_Pt_06_5nM_0,05s_X1.tif'
+    fit data_06_after2 250 150 390 270
+    time_line poly1 'time_line_poly1_06_after2.csv'
+    end
+write_molecule data_06_after2 'data_06_after2.csv'
+mark back_06_after data_06_after2 new_scatter 'mark_06_after2'
+mark back_06_after data_06_after2 new_scatter 'mark_06_after2_frames_for_check' 0 10 1
+mark back_06_after data_06_after2 new_scatter 'mark_06_after2_frames' 0 3000 100
+
+read_graph 'boli_after_Pt_06_5nM_0,05s_X2.tif'
+    fit data_06_after3 250 150 390 270
+    time_line poly1 'time_line_poly1_06_after3.csv'
+    end
+write_molecule data_06_after3 'data_06_after3.csv'
+mark back_06_after data_06_after3 new_scatter 'mark_06_after3'
+mark back_06_after data_06_after3 new_scatter 'mark_06_after3_frames_for_check' 0 10 1
+mark back_06_after data_06_after3 new_scatter 'mark_06_after3_frames' 0 3000 100
+
+end

@@ -1,0 +1,2044 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> stmtList
+Rule 2     stmtList -> statement stmtList
+Rule 3     stmtList -> END
+Rule 4     statement -> SET setList
+Rule 5     setList -> paraStmt setList
+Rule 6     setList -> END
+Rule 7     paraStmt -> parameter literal
+Rule 8     parameter -> NAME
+Rule 9     literal -> STRING
+Rule 10    literal -> NUMBER
+Rule 11    literal -> FLOAT
+Rule 12    statement -> READ_GRAPH filePath stmtList
+Rule 13    statement -> READ_PICTURE newObject filePath
+Rule 14    filePath -> literal
+Rule 15    outPath -> literal
+Rule 16    dataObject -> NAME
+Rule 17    newObject -> NAME
+Rule 18    statement -> FIT newObject
+Rule 19    statement -> TIME_LINE dataObject outPath
+Rule 20    statement -> FIT newObject literal literal literal literal
+Rule 21    statement -> FIT newObject literal literal
+Rule 22    statement -> FIT newObject literal literal literal literal literal literal
+Rule 23    statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal
+Rule 24    statement -> FILTER dataObject newObject dataObject literal literal
+Rule 25    statement -> FILTER dataObject newObject dataObject
+Rule 26    statement -> FILTER dataObject newObject literal literal
+Rule 27    statement -> CORRELATION dataObject dataObject outPath
+Rule 28    statement -> POLYGON newObject pointList
+Rule 29    statement -> CIRCLE newObject literal literal literal
+Rule 30    pointList -> literal literal pointList
+Rule 31    pointList -> <empty>
+Rule 32    statement -> MERGE newObject dataObjectList
+Rule 33    statement -> MERGE SAME_TIME newObject dataObjectList
+Rule 34    dataObjectList -> dataObject dataObjectList
+Rule 35    dataObjectList -> <empty>
+Rule 36    statement -> READ_MOLECULE newObject filePath
+Rule 37    statement -> WRITE_MOLECULE dataObject outPath
+Rule 38    statement -> SCATTER newObject scatterList
+Rule 39    scatterList -> parameter literal scatterList
+Rule 40    scatterList -> END
+Rule 41    markList -> mark_sub markList
+Rule 42    markList -> END
+Rule 43    statement -> MARK dataObject outPath literal literal literal markList
+Rule 44    statement -> MARK dataObject outPath literal literal markList
+Rule 45    statement -> MARK dataObject outPath literal markList
+Rule 46    statement -> MARK dataObject outPath markList
+Rule 47    mark_sub -> dataObject dataObject
+
+Terminals, with rules where they appear
+
+CIRCLE               : 29
+CORRELATION          : 27
+DISTRICT_ANALYZE     : 23
+END                  : 3 6 40 42
+FILTER               : 24 25 26
+FIT                  : 18 20 21 22
+FLOAT                : 11
+MARK                 : 43 44 45 46
+MERGE                : 32 33
+NAME                 : 8 16 17
+NUMBER               : 10
+POLYGON              : 28
+READ_GRAPH           : 12
+READ_MOLECULE        : 36
+READ_PICTURE         : 13
+SAME_TIME            : 33
+SCATTER              : 38
+SET                  : 4
+STRING               : 9
+TIME_LINE            : 19
+WRITE_MOLECULE       : 37
+error                : 
+
+Nonterminals, with rules where they appear
+
+dataObject           : 19 23 23 24 24 25 25 26 27 27 34 37 43 44 45 46 47 47
+dataObjectList       : 32 33 34
+filePath             : 12 13 36
+literal              : 7 14 15 20 20 20 20 21 21 22 22 22 22 22 22 23 23 24 24 26 26 29 29 29 30 30 39 43 43 43 44 44 45
+markList             : 41 43 44 45 46
+mark_sub             : 41
+newObject            : 13 18 20 21 22 24 25 26 28 29 32 33 36 38
+outPath              : 19 23 27 37 43 44 45 46
+paraStmt             : 5
+parameter            : 7 39
+pointList            : 28 30
+program              : 0
+scatterList          : 38 39
+setList              : 4 5
+statement            : 2
+stmtList             : 1 2 12
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . stmtList
+    (2) stmtList -> . statement stmtList
+    (3) stmtList -> . END
+    (4) statement -> . SET setList
+    (12) statement -> . READ_GRAPH filePath stmtList
+    (13) statement -> . READ_PICTURE newObject filePath
+    (18) statement -> . FIT newObject
+    (19) statement -> . TIME_LINE dataObject outPath
+    (20) statement -> . FIT newObject literal literal literal literal
+    (21) statement -> . FIT newObject literal literal
+    (22) statement -> . FIT newObject literal literal literal literal literal literal
+    (23) statement -> . DISTRICT_ANALYZE dataObject dataObject outPath literal literal
+    (24) statement -> . FILTER dataObject newObject dataObject literal literal
+    (25) statement -> . FILTER dataObject newObject dataObject
+    (26) statement -> . FILTER dataObject newObject literal literal
+    (27) statement -> . CORRELATION dataObject dataObject outPath
+    (28) statement -> . POLYGON newObject pointList
+    (29) statement -> . CIRCLE newObject literal literal literal
+    (32) statement -> . MERGE newObject dataObjectList
+    (33) statement -> . MERGE SAME_TIME newObject dataObjectList
+    (36) statement -> . READ_MOLECULE newObject filePath
+    (37) statement -> . WRITE_MOLECULE dataObject outPath
+    (38) statement -> . SCATTER newObject scatterList
+    (43) statement -> . MARK dataObject outPath literal literal literal markList
+    (44) statement -> . MARK dataObject outPath literal literal markList
+    (45) statement -> . MARK dataObject outPath literal markList
+    (46) statement -> . MARK dataObject outPath markList
+
+    END             shift and go to state 1
+    SET             shift and go to state 7
+    READ_GRAPH      shift and go to state 12
+    READ_PICTURE    shift and go to state 16
+    FIT             shift and go to state 6
+    TIME_LINE       shift and go to state 10
+    DISTRICT_ANALYZE shift and go to state 13
+    FILTER          shift and go to state 8
+    CORRELATION     shift and go to state 4
+    POLYGON         shift and go to state 18
+    CIRCLE          shift and go to state 11
+    MERGE           shift and go to state 19
+    READ_MOLECULE   shift and go to state 3
+    WRITE_MOLECULE  shift and go to state 2
+    SCATTER         shift and go to state 15
+    MARK            shift and go to state 14
+
+    statement                      shift and go to state 5
+    program                        shift and go to state 9
+    stmtList                       shift and go to state 17
+
+state 1
+
+    (3) stmtList -> END .
+
+    END             reduce using rule 3 (stmtList -> END .)
+    SET             reduce using rule 3 (stmtList -> END .)
+    READ_GRAPH      reduce using rule 3 (stmtList -> END .)
+    READ_PICTURE    reduce using rule 3 (stmtList -> END .)
+    FIT             reduce using rule 3 (stmtList -> END .)
+    TIME_LINE       reduce using rule 3 (stmtList -> END .)
+    DISTRICT_ANALYZE reduce using rule 3 (stmtList -> END .)
+    FILTER          reduce using rule 3 (stmtList -> END .)
+    CORRELATION     reduce using rule 3 (stmtList -> END .)
+    POLYGON         reduce using rule 3 (stmtList -> END .)
+    CIRCLE          reduce using rule 3 (stmtList -> END .)
+    MERGE           reduce using rule 3 (stmtList -> END .)
+    READ_MOLECULE   reduce using rule 3 (stmtList -> END .)
+    WRITE_MOLECULE  reduce using rule 3 (stmtList -> END .)
+    SCATTER         reduce using rule 3 (stmtList -> END .)
+    MARK            reduce using rule 3 (stmtList -> END .)
+    $end            reduce using rule 3 (stmtList -> END .)
+
+
+state 2
+
+    (37) statement -> WRITE_MOLECULE . dataObject outPath
+    (16) dataObject -> . NAME
+
+    NAME            shift and go to state 21
+
+    dataObject                     shift and go to state 20
+
+state 3
+
+    (36) statement -> READ_MOLECULE . newObject filePath
+    (17) newObject -> . NAME
+
+    NAME            shift and go to state 23
+
+    newObject                      shift and go to state 22
+
+state 4
+
+    (27) statement -> CORRELATION . dataObject dataObject outPath
+    (16) dataObject -> . NAME
+
+    NAME            shift and go to state 21
+
+    dataObject                     shift and go to state 24
+
+state 5
+
+    (2) stmtList -> statement . stmtList
+    (2) stmtList -> . statement stmtList
+    (3) stmtList -> . END
+    (4) statement -> . SET setList
+    (12) statement -> . READ_GRAPH filePath stmtList
+    (13) statement -> . READ_PICTURE newObject filePath
+    (18) statement -> . FIT newObject
+    (19) statement -> . TIME_LINE dataObject outPath
+    (20) statement -> . FIT newObject literal literal literal literal
+    (21) statement -> . FIT newObject literal literal
+    (22) statement -> . FIT newObject literal literal literal literal literal literal
+    (23) statement -> . DISTRICT_ANALYZE dataObject dataObject outPath literal literal
+    (24) statement -> . FILTER dataObject newObject dataObject literal literal
+    (25) statement -> . FILTER dataObject newObject dataObject
+    (26) statement -> . FILTER dataObject newObject literal literal
+    (27) statement -> . CORRELATION dataObject dataObject outPath
+    (28) statement -> . POLYGON newObject pointList
+    (29) statement -> . CIRCLE newObject literal literal literal
+    (32) statement -> . MERGE newObject dataObjectList
+    (33) statement -> . MERGE SAME_TIME newObject dataObjectList
+    (36) statement -> . READ_MOLECULE newObject filePath
+    (37) statement -> . WRITE_MOLECULE dataObject outPath
+    (38) statement -> . SCATTER newObject scatterList
+    (43) statement -> . MARK dataObject outPath literal literal literal markList
+    (44) statement -> . MARK dataObject outPath literal literal markList
+    (45) statement -> . MARK dataObject outPath literal markList
+    (46) statement -> . MARK dataObject outPath markList
+
+    END             shift and go to state 1
+    SET             shift and go to state 7
+    READ_GRAPH      shift and go to state 12
+    READ_PICTURE    shift and go to state 16
+    FIT             shift and go to state 6
+    TIME_LINE       shift and go to state 10
+    DISTRICT_ANALYZE shift and go to state 13
+    FILTER          shift and go to state 8
+    CORRELATION     shift and go to state 4
+    POLYGON         shift and go to state 18
+    CIRCLE          shift and go to state 11
+    MERGE           shift and go to state 19
+    READ_MOLECULE   shift and go to state 3
+    WRITE_MOLECULE  shift and go to state 2
+    SCATTER         shift and go to state 15
+    MARK            shift and go to state 14
+
+    statement                      shift and go to state 5
+    stmtList                       shift and go to state 25
+
+state 6
+
+    (18) statement -> FIT . newObject
+    (20) statement -> FIT . newObject literal literal literal literal
+    (21) statement -> FIT . newObject literal literal
+    (22) statement -> FIT . newObject literal literal literal literal literal literal
+    (17) newObject -> . NAME
+
+    NAME            shift and go to state 23
+
+    newObject                      shift and go to state 26
+
+state 7
+
+    (4) statement -> SET . setList
+    (5) setList -> . paraStmt setList
+    (6) setList -> . END
+    (7) paraStmt -> . parameter literal
+    (8) parameter -> . NAME
+
+    END             shift and go to state 27
+    NAME            shift and go to state 28
+
+    parameter                      shift and go to state 29
+    paraStmt                       shift and go to state 30
+    setList                        shift and go to state 31
+
+state 8
+
+    (24) statement -> FILTER . dataObject newObject dataObject literal literal
+    (25) statement -> FILTER . dataObject newObject dataObject
+    (26) statement -> FILTER . dataObject newObject literal literal
+    (16) dataObject -> . NAME
+
+    NAME            shift and go to state 21
+
+    dataObject                     shift and go to state 32
+
+state 9
+
+    (0) S' -> program .
+
+
+
+state 10
+
+    (19) statement -> TIME_LINE . dataObject outPath
+    (16) dataObject -> . NAME
+
+    NAME            shift and go to state 21
+
+    dataObject                     shift and go to state 33
+
+state 11
+
+    (29) statement -> CIRCLE . newObject literal literal literal
+    (17) newObject -> . NAME
+
+    NAME            shift and go to state 23
+
+    newObject                      shift and go to state 34
+
+state 12
+
+    (12) statement -> READ_GRAPH . filePath stmtList
+    (14) filePath -> . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    filePath                       shift and go to state 37
+    literal                        shift and go to state 36
+
+state 13
+
+    (23) statement -> DISTRICT_ANALYZE . dataObject dataObject outPath literal literal
+    (16) dataObject -> . NAME
+
+    NAME            shift and go to state 21
+
+    dataObject                     shift and go to state 40
+
+state 14
+
+    (43) statement -> MARK . dataObject outPath literal literal literal markList
+    (44) statement -> MARK . dataObject outPath literal literal markList
+    (45) statement -> MARK . dataObject outPath literal markList
+    (46) statement -> MARK . dataObject outPath markList
+    (16) dataObject -> . NAME
+
+    NAME            shift and go to state 21
+
+    dataObject                     shift and go to state 41
+
+state 15
+
+    (38) statement -> SCATTER . newObject scatterList
+    (17) newObject -> . NAME
+
+    NAME            shift and go to state 23
+
+    newObject                      shift and go to state 42
+
+state 16
+
+    (13) statement -> READ_PICTURE . newObject filePath
+    (17) newObject -> . NAME
+
+    NAME            shift and go to state 23
+
+    newObject                      shift and go to state 43
+
+state 17
+
+    (1) program -> stmtList .
+
+    $end            reduce using rule 1 (program -> stmtList .)
+
+
+state 18
+
+    (28) statement -> POLYGON . newObject pointList
+    (17) newObject -> . NAME
+
+    NAME            shift and go to state 23
+
+    newObject                      shift and go to state 44
+
+state 19
+
+    (32) statement -> MERGE . newObject dataObjectList
+    (33) statement -> MERGE . SAME_TIME newObject dataObjectList
+    (17) newObject -> . NAME
+
+    SAME_TIME       shift and go to state 46
+    NAME            shift and go to state 23
+
+    newObject                      shift and go to state 45
+
+state 20
+
+    (37) statement -> WRITE_MOLECULE dataObject . outPath
+    (15) outPath -> . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    outPath                        shift and go to state 48
+    literal                        shift and go to state 47
+
+state 21
+
+    (16) dataObject -> NAME .
+
+    STRING          reduce using rule 16 (dataObject -> NAME .)
+    NUMBER          reduce using rule 16 (dataObject -> NAME .)
+    FLOAT           reduce using rule 16 (dataObject -> NAME .)
+    NAME            reduce using rule 16 (dataObject -> NAME .)
+    END             reduce using rule 16 (dataObject -> NAME .)
+    SET             reduce using rule 16 (dataObject -> NAME .)
+    READ_GRAPH      reduce using rule 16 (dataObject -> NAME .)
+    READ_PICTURE    reduce using rule 16 (dataObject -> NAME .)
+    FIT             reduce using rule 16 (dataObject -> NAME .)
+    TIME_LINE       reduce using rule 16 (dataObject -> NAME .)
+    DISTRICT_ANALYZE reduce using rule 16 (dataObject -> NAME .)
+    FILTER          reduce using rule 16 (dataObject -> NAME .)
+    CORRELATION     reduce using rule 16 (dataObject -> NAME .)
+    POLYGON         reduce using rule 16 (dataObject -> NAME .)
+    CIRCLE          reduce using rule 16 (dataObject -> NAME .)
+    MERGE           reduce using rule 16 (dataObject -> NAME .)
+    READ_MOLECULE   reduce using rule 16 (dataObject -> NAME .)
+    WRITE_MOLECULE  reduce using rule 16 (dataObject -> NAME .)
+    SCATTER         reduce using rule 16 (dataObject -> NAME .)
+    MARK            reduce using rule 16 (dataObject -> NAME .)
+
+
+state 22
+
+    (36) statement -> READ_MOLECULE newObject . filePath
+    (14) filePath -> . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    filePath                       shift and go to state 49
+    literal                        shift and go to state 36
+
+state 23
+
+    (17) newObject -> NAME .
+
+    STRING          reduce using rule 17 (newObject -> NAME .)
+    NUMBER          reduce using rule 17 (newObject -> NAME .)
+    FLOAT           reduce using rule 17 (newObject -> NAME .)
+    END             reduce using rule 17 (newObject -> NAME .)
+    SET             reduce using rule 17 (newObject -> NAME .)
+    READ_GRAPH      reduce using rule 17 (newObject -> NAME .)
+    READ_PICTURE    reduce using rule 17 (newObject -> NAME .)
+    FIT             reduce using rule 17 (newObject -> NAME .)
+    TIME_LINE       reduce using rule 17 (newObject -> NAME .)
+    DISTRICT_ANALYZE reduce using rule 17 (newObject -> NAME .)
+    FILTER          reduce using rule 17 (newObject -> NAME .)
+    CORRELATION     reduce using rule 17 (newObject -> NAME .)
+    POLYGON         reduce using rule 17 (newObject -> NAME .)
+    CIRCLE          reduce using rule 17 (newObject -> NAME .)
+    MERGE           reduce using rule 17 (newObject -> NAME .)
+    READ_MOLECULE   reduce using rule 17 (newObject -> NAME .)
+    WRITE_MOLECULE  reduce using rule 17 (newObject -> NAME .)
+    SCATTER         reduce using rule 17 (newObject -> NAME .)
+    MARK            reduce using rule 17 (newObject -> NAME .)
+    NAME            reduce using rule 17 (newObject -> NAME .)
+
+
+state 24
+
+    (27) statement -> CORRELATION dataObject . dataObject outPath
+    (16) dataObject -> . NAME
+
+    NAME            shift and go to state 21
+
+    dataObject                     shift and go to state 50
+
+state 25
+
+    (2) stmtList -> statement stmtList .
+
+    END             reduce using rule 2 (stmtList -> statement stmtList .)
+    SET             reduce using rule 2 (stmtList -> statement stmtList .)
+    READ_GRAPH      reduce using rule 2 (stmtList -> statement stmtList .)
+    READ_PICTURE    reduce using rule 2 (stmtList -> statement stmtList .)
+    FIT             reduce using rule 2 (stmtList -> statement stmtList .)
+    TIME_LINE       reduce using rule 2 (stmtList -> statement stmtList .)
+    DISTRICT_ANALYZE reduce using rule 2 (stmtList -> statement stmtList .)
+    FILTER          reduce using rule 2 (stmtList -> statement stmtList .)
+    CORRELATION     reduce using rule 2 (stmtList -> statement stmtList .)
+    POLYGON         reduce using rule 2 (stmtList -> statement stmtList .)
+    CIRCLE          reduce using rule 2 (stmtList -> statement stmtList .)
+    MERGE           reduce using rule 2 (stmtList -> statement stmtList .)
+    READ_MOLECULE   reduce using rule 2 (stmtList -> statement stmtList .)
+    WRITE_MOLECULE  reduce using rule 2 (stmtList -> statement stmtList .)
+    SCATTER         reduce using rule 2 (stmtList -> statement stmtList .)
+    MARK            reduce using rule 2 (stmtList -> statement stmtList .)
+    $end            reduce using rule 2 (stmtList -> statement stmtList .)
+
+
+state 26
+
+    (18) statement -> FIT newObject .
+    (20) statement -> FIT newObject . literal literal literal literal
+    (21) statement -> FIT newObject . literal literal
+    (22) statement -> FIT newObject . literal literal literal literal literal literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    END             reduce using rule 18 (statement -> FIT newObject .)
+    SET             reduce using rule 18 (statement -> FIT newObject .)
+    READ_GRAPH      reduce using rule 18 (statement -> FIT newObject .)
+    READ_PICTURE    reduce using rule 18 (statement -> FIT newObject .)
+    FIT             reduce using rule 18 (statement -> FIT newObject .)
+    TIME_LINE       reduce using rule 18 (statement -> FIT newObject .)
+    DISTRICT_ANALYZE reduce using rule 18 (statement -> FIT newObject .)
+    FILTER          reduce using rule 18 (statement -> FIT newObject .)
+    CORRELATION     reduce using rule 18 (statement -> FIT newObject .)
+    POLYGON         reduce using rule 18 (statement -> FIT newObject .)
+    CIRCLE          reduce using rule 18 (statement -> FIT newObject .)
+    MERGE           reduce using rule 18 (statement -> FIT newObject .)
+    READ_MOLECULE   reduce using rule 18 (statement -> FIT newObject .)
+    WRITE_MOLECULE  reduce using rule 18 (statement -> FIT newObject .)
+    SCATTER         reduce using rule 18 (statement -> FIT newObject .)
+    MARK            reduce using rule 18 (statement -> FIT newObject .)
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 51
+
+state 27
+
+    (6) setList -> END .
+
+    END             reduce using rule 6 (setList -> END .)
+    SET             reduce using rule 6 (setList -> END .)
+    READ_GRAPH      reduce using rule 6 (setList -> END .)
+    READ_PICTURE    reduce using rule 6 (setList -> END .)
+    FIT             reduce using rule 6 (setList -> END .)
+    TIME_LINE       reduce using rule 6 (setList -> END .)
+    DISTRICT_ANALYZE reduce using rule 6 (setList -> END .)
+    FILTER          reduce using rule 6 (setList -> END .)
+    CORRELATION     reduce using rule 6 (setList -> END .)
+    POLYGON         reduce using rule 6 (setList -> END .)
+    CIRCLE          reduce using rule 6 (setList -> END .)
+    MERGE           reduce using rule 6 (setList -> END .)
+    READ_MOLECULE   reduce using rule 6 (setList -> END .)
+    WRITE_MOLECULE  reduce using rule 6 (setList -> END .)
+    SCATTER         reduce using rule 6 (setList -> END .)
+    MARK            reduce using rule 6 (setList -> END .)
+
+
+state 28
+
+    (8) parameter -> NAME .
+
+    STRING          reduce using rule 8 (parameter -> NAME .)
+    NUMBER          reduce using rule 8 (parameter -> NAME .)
+    FLOAT           reduce using rule 8 (parameter -> NAME .)
+
+
+state 29
+
+    (7) paraStmt -> parameter . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 52
+
+state 30
+
+    (5) setList -> paraStmt . setList
+    (5) setList -> . paraStmt setList
+    (6) setList -> . END
+    (7) paraStmt -> . parameter literal
+    (8) parameter -> . NAME
+
+    END             shift and go to state 27
+    NAME            shift and go to state 28
+
+    parameter                      shift and go to state 29
+    paraStmt                       shift and go to state 30
+    setList                        shift and go to state 53
+
+state 31
+
+    (4) statement -> SET setList .
+
+    END             reduce using rule 4 (statement -> SET setList .)
+    SET             reduce using rule 4 (statement -> SET setList .)
+    READ_GRAPH      reduce using rule 4 (statement -> SET setList .)
+    READ_PICTURE    reduce using rule 4 (statement -> SET setList .)
+    FIT             reduce using rule 4 (statement -> SET setList .)
+    TIME_LINE       reduce using rule 4 (statement -> SET setList .)
+    DISTRICT_ANALYZE reduce using rule 4 (statement -> SET setList .)
+    FILTER          reduce using rule 4 (statement -> SET setList .)
+    CORRELATION     reduce using rule 4 (statement -> SET setList .)
+    POLYGON         reduce using rule 4 (statement -> SET setList .)
+    CIRCLE          reduce using rule 4 (statement -> SET setList .)
+    MERGE           reduce using rule 4 (statement -> SET setList .)
+    READ_MOLECULE   reduce using rule 4 (statement -> SET setList .)
+    WRITE_MOLECULE  reduce using rule 4 (statement -> SET setList .)
+    SCATTER         reduce using rule 4 (statement -> SET setList .)
+    MARK            reduce using rule 4 (statement -> SET setList .)
+
+
+state 32
+
+    (24) statement -> FILTER dataObject . newObject dataObject literal literal
+    (25) statement -> FILTER dataObject . newObject dataObject
+    (26) statement -> FILTER dataObject . newObject literal literal
+    (17) newObject -> . NAME
+
+    NAME            shift and go to state 23
+
+    newObject                      shift and go to state 54
+
+state 33
+
+    (19) statement -> TIME_LINE dataObject . outPath
+    (15) outPath -> . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    outPath                        shift and go to state 55
+    literal                        shift and go to state 47
+
+state 34
+
+    (29) statement -> CIRCLE newObject . literal literal literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 56
+
+state 35
+
+    (9) literal -> STRING .
+
+    STRING          reduce using rule 9 (literal -> STRING .)
+    NUMBER          reduce using rule 9 (literal -> STRING .)
+    FLOAT           reduce using rule 9 (literal -> STRING .)
+    END             reduce using rule 9 (literal -> STRING .)
+    SET             reduce using rule 9 (literal -> STRING .)
+    READ_GRAPH      reduce using rule 9 (literal -> STRING .)
+    READ_PICTURE    reduce using rule 9 (literal -> STRING .)
+    FIT             reduce using rule 9 (literal -> STRING .)
+    TIME_LINE       reduce using rule 9 (literal -> STRING .)
+    DISTRICT_ANALYZE reduce using rule 9 (literal -> STRING .)
+    FILTER          reduce using rule 9 (literal -> STRING .)
+    CORRELATION     reduce using rule 9 (literal -> STRING .)
+    POLYGON         reduce using rule 9 (literal -> STRING .)
+    CIRCLE          reduce using rule 9 (literal -> STRING .)
+    MERGE           reduce using rule 9 (literal -> STRING .)
+    READ_MOLECULE   reduce using rule 9 (literal -> STRING .)
+    WRITE_MOLECULE  reduce using rule 9 (literal -> STRING .)
+    SCATTER         reduce using rule 9 (literal -> STRING .)
+    MARK            reduce using rule 9 (literal -> STRING .)
+    NAME            reduce using rule 9 (literal -> STRING .)
+
+
+state 36
+
+    (14) filePath -> literal .
+
+    END             reduce using rule 14 (filePath -> literal .)
+    SET             reduce using rule 14 (filePath -> literal .)
+    READ_GRAPH      reduce using rule 14 (filePath -> literal .)
+    READ_PICTURE    reduce using rule 14 (filePath -> literal .)
+    FIT             reduce using rule 14 (filePath -> literal .)
+    TIME_LINE       reduce using rule 14 (filePath -> literal .)
+    DISTRICT_ANALYZE reduce using rule 14 (filePath -> literal .)
+    FILTER          reduce using rule 14 (filePath -> literal .)
+    CORRELATION     reduce using rule 14 (filePath -> literal .)
+    POLYGON         reduce using rule 14 (filePath -> literal .)
+    CIRCLE          reduce using rule 14 (filePath -> literal .)
+    MERGE           reduce using rule 14 (filePath -> literal .)
+    READ_MOLECULE   reduce using rule 14 (filePath -> literal .)
+    WRITE_MOLECULE  reduce using rule 14 (filePath -> literal .)
+    SCATTER         reduce using rule 14 (filePath -> literal .)
+    MARK            reduce using rule 14 (filePath -> literal .)
+
+
+state 37
+
+    (12) statement -> READ_GRAPH filePath . stmtList
+    (2) stmtList -> . statement stmtList
+    (3) stmtList -> . END
+    (4) statement -> . SET setList
+    (12) statement -> . READ_GRAPH filePath stmtList
+    (13) statement -> . READ_PICTURE newObject filePath
+    (18) statement -> . FIT newObject
+    (19) statement -> . TIME_LINE dataObject outPath
+    (20) statement -> . FIT newObject literal literal literal literal
+    (21) statement -> . FIT newObject literal literal
+    (22) statement -> . FIT newObject literal literal literal literal literal literal
+    (23) statement -> . DISTRICT_ANALYZE dataObject dataObject outPath literal literal
+    (24) statement -> . FILTER dataObject newObject dataObject literal literal
+    (25) statement -> . FILTER dataObject newObject dataObject
+    (26) statement -> . FILTER dataObject newObject literal literal
+    (27) statement -> . CORRELATION dataObject dataObject outPath
+    (28) statement -> . POLYGON newObject pointList
+    (29) statement -> . CIRCLE newObject literal literal literal
+    (32) statement -> . MERGE newObject dataObjectList
+    (33) statement -> . MERGE SAME_TIME newObject dataObjectList
+    (36) statement -> . READ_MOLECULE newObject filePath
+    (37) statement -> . WRITE_MOLECULE dataObject outPath
+    (38) statement -> . SCATTER newObject scatterList
+    (43) statement -> . MARK dataObject outPath literal literal literal markList
+    (44) statement -> . MARK dataObject outPath literal literal markList
+    (45) statement -> . MARK dataObject outPath literal markList
+    (46) statement -> . MARK dataObject outPath markList
+
+    END             shift and go to state 1
+    SET             shift and go to state 7
+    READ_GRAPH      shift and go to state 12
+    READ_PICTURE    shift and go to state 16
+    FIT             shift and go to state 6
+    TIME_LINE       shift and go to state 10
+    DISTRICT_ANALYZE shift and go to state 13
+    FILTER          shift and go to state 8
+    CORRELATION     shift and go to state 4
+    POLYGON         shift and go to state 18
+    CIRCLE          shift and go to state 11
+    MERGE           shift and go to state 19
+    READ_MOLECULE   shift and go to state 3
+    WRITE_MOLECULE  shift and go to state 2
+    SCATTER         shift and go to state 15
+    MARK            shift and go to state 14
+
+    statement                      shift and go to state 5
+    stmtList                       shift and go to state 57
+
+state 38
+
+    (11) literal -> FLOAT .
+
+    STRING          reduce using rule 11 (literal -> FLOAT .)
+    NUMBER          reduce using rule 11 (literal -> FLOAT .)
+    FLOAT           reduce using rule 11 (literal -> FLOAT .)
+    END             reduce using rule 11 (literal -> FLOAT .)
+    SET             reduce using rule 11 (literal -> FLOAT .)
+    READ_GRAPH      reduce using rule 11 (literal -> FLOAT .)
+    READ_PICTURE    reduce using rule 11 (literal -> FLOAT .)
+    FIT             reduce using rule 11 (literal -> FLOAT .)
+    TIME_LINE       reduce using rule 11 (literal -> FLOAT .)
+    DISTRICT_ANALYZE reduce using rule 11 (literal -> FLOAT .)
+    FILTER          reduce using rule 11 (literal -> FLOAT .)
+    CORRELATION     reduce using rule 11 (literal -> FLOAT .)
+    POLYGON         reduce using rule 11 (literal -> FLOAT .)
+    CIRCLE          reduce using rule 11 (literal -> FLOAT .)
+    MERGE           reduce using rule 11 (literal -> FLOAT .)
+    READ_MOLECULE   reduce using rule 11 (literal -> FLOAT .)
+    WRITE_MOLECULE  reduce using rule 11 (literal -> FLOAT .)
+    SCATTER         reduce using rule 11 (literal -> FLOAT .)
+    MARK            reduce using rule 11 (literal -> FLOAT .)
+    NAME            reduce using rule 11 (literal -> FLOAT .)
+
+
+state 39
+
+    (10) literal -> NUMBER .
+
+    STRING          reduce using rule 10 (literal -> NUMBER .)
+    NUMBER          reduce using rule 10 (literal -> NUMBER .)
+    FLOAT           reduce using rule 10 (literal -> NUMBER .)
+    END             reduce using rule 10 (literal -> NUMBER .)
+    SET             reduce using rule 10 (literal -> NUMBER .)
+    READ_GRAPH      reduce using rule 10 (literal -> NUMBER .)
+    READ_PICTURE    reduce using rule 10 (literal -> NUMBER .)
+    FIT             reduce using rule 10 (literal -> NUMBER .)
+    TIME_LINE       reduce using rule 10 (literal -> NUMBER .)
+    DISTRICT_ANALYZE reduce using rule 10 (literal -> NUMBER .)
+    FILTER          reduce using rule 10 (literal -> NUMBER .)
+    CORRELATION     reduce using rule 10 (literal -> NUMBER .)
+    POLYGON         reduce using rule 10 (literal -> NUMBER .)
+    CIRCLE          reduce using rule 10 (literal -> NUMBER .)
+    MERGE           reduce using rule 10 (literal -> NUMBER .)
+    READ_MOLECULE   reduce using rule 10 (literal -> NUMBER .)
+    WRITE_MOLECULE  reduce using rule 10 (literal -> NUMBER .)
+    SCATTER         reduce using rule 10 (literal -> NUMBER .)
+    MARK            reduce using rule 10 (literal -> NUMBER .)
+    NAME            reduce using rule 10 (literal -> NUMBER .)
+
+
+state 40
+
+    (23) statement -> DISTRICT_ANALYZE dataObject . dataObject outPath literal literal
+    (16) dataObject -> . NAME
+
+    NAME            shift and go to state 21
+
+    dataObject                     shift and go to state 58
+
+state 41
+
+    (43) statement -> MARK dataObject . outPath literal literal literal markList
+    (44) statement -> MARK dataObject . outPath literal literal markList
+    (45) statement -> MARK dataObject . outPath literal markList
+    (46) statement -> MARK dataObject . outPath markList
+    (15) outPath -> . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    outPath                        shift and go to state 59
+    literal                        shift and go to state 47
+
+state 42
+
+    (38) statement -> SCATTER newObject . scatterList
+    (39) scatterList -> . parameter literal scatterList
+    (40) scatterList -> . END
+    (8) parameter -> . NAME
+
+    END             shift and go to state 60
+    NAME            shift and go to state 28
+
+    parameter                      shift and go to state 61
+    scatterList                    shift and go to state 62
+
+state 43
+
+    (13) statement -> READ_PICTURE newObject . filePath
+    (14) filePath -> . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    filePath                       shift and go to state 63
+    literal                        shift and go to state 36
+
+state 44
+
+    (28) statement -> POLYGON newObject . pointList
+    (30) pointList -> . literal literal pointList
+    (31) pointList -> .
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    END             reduce using rule 31 (pointList -> .)
+    SET             reduce using rule 31 (pointList -> .)
+    READ_GRAPH      reduce using rule 31 (pointList -> .)
+    READ_PICTURE    reduce using rule 31 (pointList -> .)
+    FIT             reduce using rule 31 (pointList -> .)
+    TIME_LINE       reduce using rule 31 (pointList -> .)
+    DISTRICT_ANALYZE reduce using rule 31 (pointList -> .)
+    FILTER          reduce using rule 31 (pointList -> .)
+    CORRELATION     reduce using rule 31 (pointList -> .)
+    POLYGON         reduce using rule 31 (pointList -> .)
+    CIRCLE          reduce using rule 31 (pointList -> .)
+    MERGE           reduce using rule 31 (pointList -> .)
+    READ_MOLECULE   reduce using rule 31 (pointList -> .)
+    WRITE_MOLECULE  reduce using rule 31 (pointList -> .)
+    SCATTER         reduce using rule 31 (pointList -> .)
+    MARK            reduce using rule 31 (pointList -> .)
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    pointList                      shift and go to state 64
+    literal                        shift and go to state 65
+
+state 45
+
+    (32) statement -> MERGE newObject . dataObjectList
+    (34) dataObjectList -> . dataObject dataObjectList
+    (35) dataObjectList -> .
+    (16) dataObject -> . NAME
+
+    END             reduce using rule 35 (dataObjectList -> .)
+    SET             reduce using rule 35 (dataObjectList -> .)
+    READ_GRAPH      reduce using rule 35 (dataObjectList -> .)
+    READ_PICTURE    reduce using rule 35 (dataObjectList -> .)
+    FIT             reduce using rule 35 (dataObjectList -> .)
+    TIME_LINE       reduce using rule 35 (dataObjectList -> .)
+    DISTRICT_ANALYZE reduce using rule 35 (dataObjectList -> .)
+    FILTER          reduce using rule 35 (dataObjectList -> .)
+    CORRELATION     reduce using rule 35 (dataObjectList -> .)
+    POLYGON         reduce using rule 35 (dataObjectList -> .)
+    CIRCLE          reduce using rule 35 (dataObjectList -> .)
+    MERGE           reduce using rule 35 (dataObjectList -> .)
+    READ_MOLECULE   reduce using rule 35 (dataObjectList -> .)
+    WRITE_MOLECULE  reduce using rule 35 (dataObjectList -> .)
+    SCATTER         reduce using rule 35 (dataObjectList -> .)
+    MARK            reduce using rule 35 (dataObjectList -> .)
+    NAME            shift and go to state 21
+
+    dataObjectList                 shift and go to state 66
+    dataObject                     shift and go to state 67
+
+state 46
+
+    (33) statement -> MERGE SAME_TIME . newObject dataObjectList
+    (17) newObject -> . NAME
+
+    NAME            shift and go to state 23
+
+    newObject                      shift and go to state 68
+
+state 47
+
+    (15) outPath -> literal .
+
+    END             reduce using rule 15 (outPath -> literal .)
+    SET             reduce using rule 15 (outPath -> literal .)
+    READ_GRAPH      reduce using rule 15 (outPath -> literal .)
+    READ_PICTURE    reduce using rule 15 (outPath -> literal .)
+    FIT             reduce using rule 15 (outPath -> literal .)
+    TIME_LINE       reduce using rule 15 (outPath -> literal .)
+    DISTRICT_ANALYZE reduce using rule 15 (outPath -> literal .)
+    FILTER          reduce using rule 15 (outPath -> literal .)
+    CORRELATION     reduce using rule 15 (outPath -> literal .)
+    POLYGON         reduce using rule 15 (outPath -> literal .)
+    CIRCLE          reduce using rule 15 (outPath -> literal .)
+    MERGE           reduce using rule 15 (outPath -> literal .)
+    READ_MOLECULE   reduce using rule 15 (outPath -> literal .)
+    WRITE_MOLECULE  reduce using rule 15 (outPath -> literal .)
+    SCATTER         reduce using rule 15 (outPath -> literal .)
+    MARK            reduce using rule 15 (outPath -> literal .)
+    STRING          reduce using rule 15 (outPath -> literal .)
+    NUMBER          reduce using rule 15 (outPath -> literal .)
+    FLOAT           reduce using rule 15 (outPath -> literal .)
+    NAME            reduce using rule 15 (outPath -> literal .)
+
+
+state 48
+
+    (37) statement -> WRITE_MOLECULE dataObject outPath .
+
+    END             reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    SET             reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    READ_GRAPH      reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    READ_PICTURE    reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    FIT             reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    TIME_LINE       reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    DISTRICT_ANALYZE reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    FILTER          reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    CORRELATION     reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    POLYGON         reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    CIRCLE          reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    MERGE           reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    READ_MOLECULE   reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    WRITE_MOLECULE  reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    SCATTER         reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+    MARK            reduce using rule 37 (statement -> WRITE_MOLECULE dataObject outPath .)
+
+
+state 49
+
+    (36) statement -> READ_MOLECULE newObject filePath .
+
+    END             reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    SET             reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    READ_GRAPH      reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    READ_PICTURE    reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    FIT             reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    TIME_LINE       reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    DISTRICT_ANALYZE reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    FILTER          reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    CORRELATION     reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    POLYGON         reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    CIRCLE          reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    MERGE           reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    READ_MOLECULE   reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    WRITE_MOLECULE  reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    SCATTER         reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+    MARK            reduce using rule 36 (statement -> READ_MOLECULE newObject filePath .)
+
+
+state 50
+
+    (27) statement -> CORRELATION dataObject dataObject . outPath
+    (15) outPath -> . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    outPath                        shift and go to state 69
+    literal                        shift and go to state 47
+
+state 51
+
+    (20) statement -> FIT newObject literal . literal literal literal
+    (21) statement -> FIT newObject literal . literal
+    (22) statement -> FIT newObject literal . literal literal literal literal literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 70
+
+state 52
+
+    (7) paraStmt -> parameter literal .
+
+    END             reduce using rule 7 (paraStmt -> parameter literal .)
+    NAME            reduce using rule 7 (paraStmt -> parameter literal .)
+
+
+state 53
+
+    (5) setList -> paraStmt setList .
+
+    END             reduce using rule 5 (setList -> paraStmt setList .)
+    SET             reduce using rule 5 (setList -> paraStmt setList .)
+    READ_GRAPH      reduce using rule 5 (setList -> paraStmt setList .)
+    READ_PICTURE    reduce using rule 5 (setList -> paraStmt setList .)
+    FIT             reduce using rule 5 (setList -> paraStmt setList .)
+    TIME_LINE       reduce using rule 5 (setList -> paraStmt setList .)
+    DISTRICT_ANALYZE reduce using rule 5 (setList -> paraStmt setList .)
+    FILTER          reduce using rule 5 (setList -> paraStmt setList .)
+    CORRELATION     reduce using rule 5 (setList -> paraStmt setList .)
+    POLYGON         reduce using rule 5 (setList -> paraStmt setList .)
+    CIRCLE          reduce using rule 5 (setList -> paraStmt setList .)
+    MERGE           reduce using rule 5 (setList -> paraStmt setList .)
+    READ_MOLECULE   reduce using rule 5 (setList -> paraStmt setList .)
+    WRITE_MOLECULE  reduce using rule 5 (setList -> paraStmt setList .)
+    SCATTER         reduce using rule 5 (setList -> paraStmt setList .)
+    MARK            reduce using rule 5 (setList -> paraStmt setList .)
+
+
+state 54
+
+    (24) statement -> FILTER dataObject newObject . dataObject literal literal
+    (25) statement -> FILTER dataObject newObject . dataObject
+    (26) statement -> FILTER dataObject newObject . literal literal
+    (16) dataObject -> . NAME
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    NAME            shift and go to state 21
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    dataObject                     shift and go to state 71
+    literal                        shift and go to state 72
+
+state 55
+
+    (19) statement -> TIME_LINE dataObject outPath .
+
+    END             reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    SET             reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    READ_GRAPH      reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    READ_PICTURE    reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    FIT             reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    TIME_LINE       reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    DISTRICT_ANALYZE reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    FILTER          reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    CORRELATION     reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    POLYGON         reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    CIRCLE          reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    MERGE           reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    READ_MOLECULE   reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    WRITE_MOLECULE  reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    SCATTER         reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+    MARK            reduce using rule 19 (statement -> TIME_LINE dataObject outPath .)
+
+
+state 56
+
+    (29) statement -> CIRCLE newObject literal . literal literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 73
+
+state 57
+
+    (12) statement -> READ_GRAPH filePath stmtList .
+
+    END             reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    SET             reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    READ_GRAPH      reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    READ_PICTURE    reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    FIT             reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    TIME_LINE       reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    DISTRICT_ANALYZE reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    FILTER          reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    CORRELATION     reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    POLYGON         reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    CIRCLE          reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    MERGE           reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    READ_MOLECULE   reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    WRITE_MOLECULE  reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    SCATTER         reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+    MARK            reduce using rule 12 (statement -> READ_GRAPH filePath stmtList .)
+
+
+state 58
+
+    (23) statement -> DISTRICT_ANALYZE dataObject dataObject . outPath literal literal
+    (15) outPath -> . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    outPath                        shift and go to state 74
+    literal                        shift and go to state 47
+
+state 59
+
+    (43) statement -> MARK dataObject outPath . literal literal literal markList
+    (44) statement -> MARK dataObject outPath . literal literal markList
+    (45) statement -> MARK dataObject outPath . literal markList
+    (46) statement -> MARK dataObject outPath . markList
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+    (41) markList -> . mark_sub markList
+    (42) markList -> . END
+    (47) mark_sub -> . dataObject dataObject
+    (16) dataObject -> . NAME
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+    END             shift and go to state 75
+    NAME            shift and go to state 21
+
+    markList                       shift and go to state 77
+    dataObject                     shift and go to state 78
+    literal                        shift and go to state 79
+    mark_sub                       shift and go to state 76
+
+state 60
+
+    (40) scatterList -> END .
+
+    END             reduce using rule 40 (scatterList -> END .)
+    SET             reduce using rule 40 (scatterList -> END .)
+    READ_GRAPH      reduce using rule 40 (scatterList -> END .)
+    READ_PICTURE    reduce using rule 40 (scatterList -> END .)
+    FIT             reduce using rule 40 (scatterList -> END .)
+    TIME_LINE       reduce using rule 40 (scatterList -> END .)
+    DISTRICT_ANALYZE reduce using rule 40 (scatterList -> END .)
+    FILTER          reduce using rule 40 (scatterList -> END .)
+    CORRELATION     reduce using rule 40 (scatterList -> END .)
+    POLYGON         reduce using rule 40 (scatterList -> END .)
+    CIRCLE          reduce using rule 40 (scatterList -> END .)
+    MERGE           reduce using rule 40 (scatterList -> END .)
+    READ_MOLECULE   reduce using rule 40 (scatterList -> END .)
+    WRITE_MOLECULE  reduce using rule 40 (scatterList -> END .)
+    SCATTER         reduce using rule 40 (scatterList -> END .)
+    MARK            reduce using rule 40 (scatterList -> END .)
+
+
+state 61
+
+    (39) scatterList -> parameter . literal scatterList
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 80
+
+state 62
+
+    (38) statement -> SCATTER newObject scatterList .
+
+    END             reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    SET             reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    READ_GRAPH      reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    READ_PICTURE    reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    FIT             reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    TIME_LINE       reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    DISTRICT_ANALYZE reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    FILTER          reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    CORRELATION     reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    POLYGON         reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    CIRCLE          reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    MERGE           reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    READ_MOLECULE   reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    WRITE_MOLECULE  reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    SCATTER         reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+    MARK            reduce using rule 38 (statement -> SCATTER newObject scatterList .)
+
+
+state 63
+
+    (13) statement -> READ_PICTURE newObject filePath .
+
+    END             reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    SET             reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    READ_GRAPH      reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    READ_PICTURE    reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    FIT             reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    TIME_LINE       reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    DISTRICT_ANALYZE reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    FILTER          reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    CORRELATION     reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    POLYGON         reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    CIRCLE          reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    MERGE           reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    READ_MOLECULE   reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    WRITE_MOLECULE  reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    SCATTER         reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+    MARK            reduce using rule 13 (statement -> READ_PICTURE newObject filePath .)
+
+
+state 64
+
+    (28) statement -> POLYGON newObject pointList .
+
+    END             reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    SET             reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    READ_GRAPH      reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    READ_PICTURE    reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    FIT             reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    TIME_LINE       reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    DISTRICT_ANALYZE reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    FILTER          reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    CORRELATION     reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    POLYGON         reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    CIRCLE          reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    MERGE           reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    READ_MOLECULE   reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    WRITE_MOLECULE  reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    SCATTER         reduce using rule 28 (statement -> POLYGON newObject pointList .)
+    MARK            reduce using rule 28 (statement -> POLYGON newObject pointList .)
+
+
+state 65
+
+    (30) pointList -> literal . literal pointList
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 81
+
+state 66
+
+    (32) statement -> MERGE newObject dataObjectList .
+
+    END             reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    SET             reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    READ_GRAPH      reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    READ_PICTURE    reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    FIT             reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    TIME_LINE       reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    DISTRICT_ANALYZE reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    FILTER          reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    CORRELATION     reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    POLYGON         reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    CIRCLE          reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    MERGE           reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    READ_MOLECULE   reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    WRITE_MOLECULE  reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    SCATTER         reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+    MARK            reduce using rule 32 (statement -> MERGE newObject dataObjectList .)
+
+
+state 67
+
+    (34) dataObjectList -> dataObject . dataObjectList
+    (34) dataObjectList -> . dataObject dataObjectList
+    (35) dataObjectList -> .
+    (16) dataObject -> . NAME
+
+    END             reduce using rule 35 (dataObjectList -> .)
+    SET             reduce using rule 35 (dataObjectList -> .)
+    READ_GRAPH      reduce using rule 35 (dataObjectList -> .)
+    READ_PICTURE    reduce using rule 35 (dataObjectList -> .)
+    FIT             reduce using rule 35 (dataObjectList -> .)
+    TIME_LINE       reduce using rule 35 (dataObjectList -> .)
+    DISTRICT_ANALYZE reduce using rule 35 (dataObjectList -> .)
+    FILTER          reduce using rule 35 (dataObjectList -> .)
+    CORRELATION     reduce using rule 35 (dataObjectList -> .)
+    POLYGON         reduce using rule 35 (dataObjectList -> .)
+    CIRCLE          reduce using rule 35 (dataObjectList -> .)
+    MERGE           reduce using rule 35 (dataObjectList -> .)
+    READ_MOLECULE   reduce using rule 35 (dataObjectList -> .)
+    WRITE_MOLECULE  reduce using rule 35 (dataObjectList -> .)
+    SCATTER         reduce using rule 35 (dataObjectList -> .)
+    MARK            reduce using rule 35 (dataObjectList -> .)
+    NAME            shift and go to state 21
+
+    dataObjectList                 shift and go to state 82
+    dataObject                     shift and go to state 67
+
+state 68
+
+    (33) statement -> MERGE SAME_TIME newObject . dataObjectList
+    (34) dataObjectList -> . dataObject dataObjectList
+    (35) dataObjectList -> .
+    (16) dataObject -> . NAME
+
+    END             reduce using rule 35 (dataObjectList -> .)
+    SET             reduce using rule 35 (dataObjectList -> .)
+    READ_GRAPH      reduce using rule 35 (dataObjectList -> .)
+    READ_PICTURE    reduce using rule 35 (dataObjectList -> .)
+    FIT             reduce using rule 35 (dataObjectList -> .)
+    TIME_LINE       reduce using rule 35 (dataObjectList -> .)
+    DISTRICT_ANALYZE reduce using rule 35 (dataObjectList -> .)
+    FILTER          reduce using rule 35 (dataObjectList -> .)
+    CORRELATION     reduce using rule 35 (dataObjectList -> .)
+    POLYGON         reduce using rule 35 (dataObjectList -> .)
+    CIRCLE          reduce using rule 35 (dataObjectList -> .)
+    MERGE           reduce using rule 35 (dataObjectList -> .)
+    READ_MOLECULE   reduce using rule 35 (dataObjectList -> .)
+    WRITE_MOLECULE  reduce using rule 35 (dataObjectList -> .)
+    SCATTER         reduce using rule 35 (dataObjectList -> .)
+    MARK            reduce using rule 35 (dataObjectList -> .)
+    NAME            shift and go to state 21
+
+    dataObjectList                 shift and go to state 83
+    dataObject                     shift and go to state 67
+
+state 69
+
+    (27) statement -> CORRELATION dataObject dataObject outPath .
+
+    END             reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    SET             reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    READ_GRAPH      reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    READ_PICTURE    reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    FIT             reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    TIME_LINE       reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    DISTRICT_ANALYZE reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    FILTER          reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    CORRELATION     reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    POLYGON         reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    CIRCLE          reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    MERGE           reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    READ_MOLECULE   reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    WRITE_MOLECULE  reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    SCATTER         reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+    MARK            reduce using rule 27 (statement -> CORRELATION dataObject dataObject outPath .)
+
+
+state 70
+
+    (20) statement -> FIT newObject literal literal . literal literal
+    (21) statement -> FIT newObject literal literal .
+    (22) statement -> FIT newObject literal literal . literal literal literal literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    END             reduce using rule 21 (statement -> FIT newObject literal literal .)
+    SET             reduce using rule 21 (statement -> FIT newObject literal literal .)
+    READ_GRAPH      reduce using rule 21 (statement -> FIT newObject literal literal .)
+    READ_PICTURE    reduce using rule 21 (statement -> FIT newObject literal literal .)
+    FIT             reduce using rule 21 (statement -> FIT newObject literal literal .)
+    TIME_LINE       reduce using rule 21 (statement -> FIT newObject literal literal .)
+    DISTRICT_ANALYZE reduce using rule 21 (statement -> FIT newObject literal literal .)
+    FILTER          reduce using rule 21 (statement -> FIT newObject literal literal .)
+    CORRELATION     reduce using rule 21 (statement -> FIT newObject literal literal .)
+    POLYGON         reduce using rule 21 (statement -> FIT newObject literal literal .)
+    CIRCLE          reduce using rule 21 (statement -> FIT newObject literal literal .)
+    MERGE           reduce using rule 21 (statement -> FIT newObject literal literal .)
+    READ_MOLECULE   reduce using rule 21 (statement -> FIT newObject literal literal .)
+    WRITE_MOLECULE  reduce using rule 21 (statement -> FIT newObject literal literal .)
+    SCATTER         reduce using rule 21 (statement -> FIT newObject literal literal .)
+    MARK            reduce using rule 21 (statement -> FIT newObject literal literal .)
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 84
+
+state 71
+
+    (24) statement -> FILTER dataObject newObject dataObject . literal literal
+    (25) statement -> FILTER dataObject newObject dataObject .
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    END             reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    SET             reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    READ_GRAPH      reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    READ_PICTURE    reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    FIT             reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    TIME_LINE       reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    DISTRICT_ANALYZE reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    FILTER          reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    CORRELATION     reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    POLYGON         reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    CIRCLE          reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    MERGE           reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    READ_MOLECULE   reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    WRITE_MOLECULE  reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    SCATTER         reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    MARK            reduce using rule 25 (statement -> FILTER dataObject newObject dataObject .)
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 85
+
+state 72
+
+    (26) statement -> FILTER dataObject newObject literal . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 86
+
+state 73
+
+    (29) statement -> CIRCLE newObject literal literal . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 87
+
+state 74
+
+    (23) statement -> DISTRICT_ANALYZE dataObject dataObject outPath . literal literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 88
+
+state 75
+
+    (42) markList -> END .
+
+    END             reduce using rule 42 (markList -> END .)
+    SET             reduce using rule 42 (markList -> END .)
+    READ_GRAPH      reduce using rule 42 (markList -> END .)
+    READ_PICTURE    reduce using rule 42 (markList -> END .)
+    FIT             reduce using rule 42 (markList -> END .)
+    TIME_LINE       reduce using rule 42 (markList -> END .)
+    DISTRICT_ANALYZE reduce using rule 42 (markList -> END .)
+    FILTER          reduce using rule 42 (markList -> END .)
+    CORRELATION     reduce using rule 42 (markList -> END .)
+    POLYGON         reduce using rule 42 (markList -> END .)
+    CIRCLE          reduce using rule 42 (markList -> END .)
+    MERGE           reduce using rule 42 (markList -> END .)
+    READ_MOLECULE   reduce using rule 42 (markList -> END .)
+    WRITE_MOLECULE  reduce using rule 42 (markList -> END .)
+    SCATTER         reduce using rule 42 (markList -> END .)
+    MARK            reduce using rule 42 (markList -> END .)
+
+
+state 76
+
+    (41) markList -> mark_sub . markList
+    (41) markList -> . mark_sub markList
+    (42) markList -> . END
+    (47) mark_sub -> . dataObject dataObject
+    (16) dataObject -> . NAME
+
+    END             shift and go to state 75
+    NAME            shift and go to state 21
+
+    mark_sub                       shift and go to state 76
+    markList                       shift and go to state 89
+    dataObject                     shift and go to state 78
+
+state 77
+
+    (46) statement -> MARK dataObject outPath markList .
+
+    END             reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    SET             reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    READ_GRAPH      reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    READ_PICTURE    reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    FIT             reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    TIME_LINE       reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    DISTRICT_ANALYZE reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    FILTER          reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    CORRELATION     reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    POLYGON         reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    CIRCLE          reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    MERGE           reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    READ_MOLECULE   reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    WRITE_MOLECULE  reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    SCATTER         reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+    MARK            reduce using rule 46 (statement -> MARK dataObject outPath markList .)
+
+
+state 78
+
+    (47) mark_sub -> dataObject . dataObject
+    (16) dataObject -> . NAME
+
+    NAME            shift and go to state 21
+
+    dataObject                     shift and go to state 90
+
+state 79
+
+    (43) statement -> MARK dataObject outPath literal . literal literal markList
+    (44) statement -> MARK dataObject outPath literal . literal markList
+    (45) statement -> MARK dataObject outPath literal . markList
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+    (41) markList -> . mark_sub markList
+    (42) markList -> . END
+    (47) mark_sub -> . dataObject dataObject
+    (16) dataObject -> . NAME
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+    END             shift and go to state 75
+    NAME            shift and go to state 21
+
+    markList                       shift and go to state 91
+    dataObject                     shift and go to state 78
+    literal                        shift and go to state 92
+    mark_sub                       shift and go to state 76
+
+state 80
+
+    (39) scatterList -> parameter literal . scatterList
+    (39) scatterList -> . parameter literal scatterList
+    (40) scatterList -> . END
+    (8) parameter -> . NAME
+
+    END             shift and go to state 60
+    NAME            shift and go to state 28
+
+    parameter                      shift and go to state 61
+    scatterList                    shift and go to state 93
+
+state 81
+
+    (30) pointList -> literal literal . pointList
+    (30) pointList -> . literal literal pointList
+    (31) pointList -> .
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    END             reduce using rule 31 (pointList -> .)
+    SET             reduce using rule 31 (pointList -> .)
+    READ_GRAPH      reduce using rule 31 (pointList -> .)
+    READ_PICTURE    reduce using rule 31 (pointList -> .)
+    FIT             reduce using rule 31 (pointList -> .)
+    TIME_LINE       reduce using rule 31 (pointList -> .)
+    DISTRICT_ANALYZE reduce using rule 31 (pointList -> .)
+    FILTER          reduce using rule 31 (pointList -> .)
+    CORRELATION     reduce using rule 31 (pointList -> .)
+    POLYGON         reduce using rule 31 (pointList -> .)
+    CIRCLE          reduce using rule 31 (pointList -> .)
+    MERGE           reduce using rule 31 (pointList -> .)
+    READ_MOLECULE   reduce using rule 31 (pointList -> .)
+    WRITE_MOLECULE  reduce using rule 31 (pointList -> .)
+    SCATTER         reduce using rule 31 (pointList -> .)
+    MARK            reduce using rule 31 (pointList -> .)
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    pointList                      shift and go to state 94
+    literal                        shift and go to state 65
+
+state 82
+
+    (34) dataObjectList -> dataObject dataObjectList .
+
+    END             reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    SET             reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    READ_GRAPH      reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    READ_PICTURE    reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    FIT             reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    TIME_LINE       reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    DISTRICT_ANALYZE reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    FILTER          reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    CORRELATION     reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    POLYGON         reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    CIRCLE          reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    MERGE           reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    READ_MOLECULE   reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    WRITE_MOLECULE  reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    SCATTER         reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+    MARK            reduce using rule 34 (dataObjectList -> dataObject dataObjectList .)
+
+
+state 83
+
+    (33) statement -> MERGE SAME_TIME newObject dataObjectList .
+
+    END             reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    SET             reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    READ_GRAPH      reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    READ_PICTURE    reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    FIT             reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    TIME_LINE       reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    DISTRICT_ANALYZE reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    FILTER          reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    CORRELATION     reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    POLYGON         reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    CIRCLE          reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    MERGE           reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    READ_MOLECULE   reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    WRITE_MOLECULE  reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    SCATTER         reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+    MARK            reduce using rule 33 (statement -> MERGE SAME_TIME newObject dataObjectList .)
+
+
+state 84
+
+    (20) statement -> FIT newObject literal literal literal . literal
+    (22) statement -> FIT newObject literal literal literal . literal literal literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 95
+
+state 85
+
+    (24) statement -> FILTER dataObject newObject dataObject literal . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 96
+
+state 86
+
+    (26) statement -> FILTER dataObject newObject literal literal .
+
+    END             reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    SET             reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    READ_GRAPH      reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    READ_PICTURE    reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    FIT             reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    TIME_LINE       reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    DISTRICT_ANALYZE reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    FILTER          reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    CORRELATION     reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    POLYGON         reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    CIRCLE          reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    MERGE           reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    READ_MOLECULE   reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    WRITE_MOLECULE  reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    SCATTER         reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+    MARK            reduce using rule 26 (statement -> FILTER dataObject newObject literal literal .)
+
+
+state 87
+
+    (29) statement -> CIRCLE newObject literal literal literal .
+
+    END             reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    SET             reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    READ_GRAPH      reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    READ_PICTURE    reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    FIT             reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    TIME_LINE       reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    DISTRICT_ANALYZE reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    FILTER          reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    CORRELATION     reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    POLYGON         reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    CIRCLE          reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    MERGE           reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    READ_MOLECULE   reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    WRITE_MOLECULE  reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    SCATTER         reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+    MARK            reduce using rule 29 (statement -> CIRCLE newObject literal literal literal .)
+
+
+state 88
+
+    (23) statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 97
+
+state 89
+
+    (41) markList -> mark_sub markList .
+
+    END             reduce using rule 41 (markList -> mark_sub markList .)
+    SET             reduce using rule 41 (markList -> mark_sub markList .)
+    READ_GRAPH      reduce using rule 41 (markList -> mark_sub markList .)
+    READ_PICTURE    reduce using rule 41 (markList -> mark_sub markList .)
+    FIT             reduce using rule 41 (markList -> mark_sub markList .)
+    TIME_LINE       reduce using rule 41 (markList -> mark_sub markList .)
+    DISTRICT_ANALYZE reduce using rule 41 (markList -> mark_sub markList .)
+    FILTER          reduce using rule 41 (markList -> mark_sub markList .)
+    CORRELATION     reduce using rule 41 (markList -> mark_sub markList .)
+    POLYGON         reduce using rule 41 (markList -> mark_sub markList .)
+    CIRCLE          reduce using rule 41 (markList -> mark_sub markList .)
+    MERGE           reduce using rule 41 (markList -> mark_sub markList .)
+    READ_MOLECULE   reduce using rule 41 (markList -> mark_sub markList .)
+    WRITE_MOLECULE  reduce using rule 41 (markList -> mark_sub markList .)
+    SCATTER         reduce using rule 41 (markList -> mark_sub markList .)
+    MARK            reduce using rule 41 (markList -> mark_sub markList .)
+
+
+state 90
+
+    (47) mark_sub -> dataObject dataObject .
+
+    END             reduce using rule 47 (mark_sub -> dataObject dataObject .)
+    NAME            reduce using rule 47 (mark_sub -> dataObject dataObject .)
+
+
+state 91
+
+    (45) statement -> MARK dataObject outPath literal markList .
+
+    END             reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    SET             reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    READ_GRAPH      reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    READ_PICTURE    reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    FIT             reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    TIME_LINE       reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    DISTRICT_ANALYZE reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    FILTER          reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    CORRELATION     reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    POLYGON         reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    CIRCLE          reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    MERGE           reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    READ_MOLECULE   reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    WRITE_MOLECULE  reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    SCATTER         reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+    MARK            reduce using rule 45 (statement -> MARK dataObject outPath literal markList .)
+
+
+state 92
+
+    (43) statement -> MARK dataObject outPath literal literal . literal markList
+    (44) statement -> MARK dataObject outPath literal literal . markList
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+    (41) markList -> . mark_sub markList
+    (42) markList -> . END
+    (47) mark_sub -> . dataObject dataObject
+    (16) dataObject -> . NAME
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+    END             shift and go to state 75
+    NAME            shift and go to state 21
+
+    markList                       shift and go to state 98
+    dataObject                     shift and go to state 78
+    literal                        shift and go to state 99
+    mark_sub                       shift and go to state 76
+
+state 93
+
+    (39) scatterList -> parameter literal scatterList .
+
+    END             reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    SET             reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    READ_GRAPH      reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    READ_PICTURE    reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    FIT             reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    TIME_LINE       reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    DISTRICT_ANALYZE reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    FILTER          reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    CORRELATION     reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    POLYGON         reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    CIRCLE          reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    MERGE           reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    READ_MOLECULE   reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    WRITE_MOLECULE  reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    SCATTER         reduce using rule 39 (scatterList -> parameter literal scatterList .)
+    MARK            reduce using rule 39 (scatterList -> parameter literal scatterList .)
+
+
+state 94
+
+    (30) pointList -> literal literal pointList .
+
+    END             reduce using rule 30 (pointList -> literal literal pointList .)
+    SET             reduce using rule 30 (pointList -> literal literal pointList .)
+    READ_GRAPH      reduce using rule 30 (pointList -> literal literal pointList .)
+    READ_PICTURE    reduce using rule 30 (pointList -> literal literal pointList .)
+    FIT             reduce using rule 30 (pointList -> literal literal pointList .)
+    TIME_LINE       reduce using rule 30 (pointList -> literal literal pointList .)
+    DISTRICT_ANALYZE reduce using rule 30 (pointList -> literal literal pointList .)
+    FILTER          reduce using rule 30 (pointList -> literal literal pointList .)
+    CORRELATION     reduce using rule 30 (pointList -> literal literal pointList .)
+    POLYGON         reduce using rule 30 (pointList -> literal literal pointList .)
+    CIRCLE          reduce using rule 30 (pointList -> literal literal pointList .)
+    MERGE           reduce using rule 30 (pointList -> literal literal pointList .)
+    READ_MOLECULE   reduce using rule 30 (pointList -> literal literal pointList .)
+    WRITE_MOLECULE  reduce using rule 30 (pointList -> literal literal pointList .)
+    SCATTER         reduce using rule 30 (pointList -> literal literal pointList .)
+    MARK            reduce using rule 30 (pointList -> literal literal pointList .)
+
+
+state 95
+
+    (20) statement -> FIT newObject literal literal literal literal .
+    (22) statement -> FIT newObject literal literal literal literal . literal literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    END             reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    SET             reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    READ_GRAPH      reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    READ_PICTURE    reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    FIT             reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    TIME_LINE       reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    DISTRICT_ANALYZE reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    FILTER          reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    CORRELATION     reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    POLYGON         reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    CIRCLE          reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    MERGE           reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    READ_MOLECULE   reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    WRITE_MOLECULE  reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    SCATTER         reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    MARK            reduce using rule 20 (statement -> FIT newObject literal literal literal literal .)
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 100
+
+state 96
+
+    (24) statement -> FILTER dataObject newObject dataObject literal literal .
+
+    END             reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    SET             reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    READ_GRAPH      reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    READ_PICTURE    reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    FIT             reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    TIME_LINE       reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    DISTRICT_ANALYZE reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    FILTER          reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    CORRELATION     reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    POLYGON         reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    CIRCLE          reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    MERGE           reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    READ_MOLECULE   reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    WRITE_MOLECULE  reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    SCATTER         reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+    MARK            reduce using rule 24 (statement -> FILTER dataObject newObject dataObject literal literal .)
+
+
+state 97
+
+    (23) statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .
+
+    END             reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    SET             reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    READ_GRAPH      reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    READ_PICTURE    reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    FIT             reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    TIME_LINE       reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    DISTRICT_ANALYZE reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    FILTER          reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    CORRELATION     reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    POLYGON         reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    CIRCLE          reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    MERGE           reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    READ_MOLECULE   reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    WRITE_MOLECULE  reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    SCATTER         reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+    MARK            reduce using rule 23 (statement -> DISTRICT_ANALYZE dataObject dataObject outPath literal literal .)
+
+
+state 98
+
+    (44) statement -> MARK dataObject outPath literal literal markList .
+
+    END             reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    SET             reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    READ_GRAPH      reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    READ_PICTURE    reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    FIT             reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    TIME_LINE       reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    DISTRICT_ANALYZE reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    FILTER          reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    CORRELATION     reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    POLYGON         reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    CIRCLE          reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    MERGE           reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    READ_MOLECULE   reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    WRITE_MOLECULE  reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    SCATTER         reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+    MARK            reduce using rule 44 (statement -> MARK dataObject outPath literal literal markList .)
+
+
+state 99
+
+    (43) statement -> MARK dataObject outPath literal literal literal . markList
+    (41) markList -> . mark_sub markList
+    (42) markList -> . END
+    (47) mark_sub -> . dataObject dataObject
+    (16) dataObject -> . NAME
+
+    END             shift and go to state 75
+    NAME            shift and go to state 21
+
+    markList                       shift and go to state 101
+    dataObject                     shift and go to state 78
+    mark_sub                       shift and go to state 76
+
+state 100
+
+    (22) statement -> FIT newObject literal literal literal literal literal . literal
+    (9) literal -> . STRING
+    (10) literal -> . NUMBER
+    (11) literal -> . FLOAT
+
+    STRING          shift and go to state 35
+    NUMBER          shift and go to state 39
+    FLOAT           shift and go to state 38
+
+    literal                        shift and go to state 102
+
+state 101
+
+    (43) statement -> MARK dataObject outPath literal literal literal markList .
+
+    END             reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    SET             reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    READ_GRAPH      reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    READ_PICTURE    reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    FIT             reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    TIME_LINE       reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    DISTRICT_ANALYZE reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    FILTER          reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    CORRELATION     reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    POLYGON         reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    CIRCLE          reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    MERGE           reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    READ_MOLECULE   reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    WRITE_MOLECULE  reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    SCATTER         reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+    MARK            reduce using rule 43 (statement -> MARK dataObject outPath literal literal literal markList .)
+
+
+state 102
+
+    (22) statement -> FIT newObject literal literal literal literal literal literal .
+
+    END             reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    SET             reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    READ_GRAPH      reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    READ_PICTURE    reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    FIT             reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    TIME_LINE       reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    DISTRICT_ANALYZE reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    FILTER          reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    CORRELATION     reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    POLYGON         reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    CIRCLE          reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    MERGE           reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    READ_MOLECULE   reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    WRITE_MOLECULE  reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    SCATTER         reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+    MARK            reduce using rule 22 (statement -> FIT newObject literal literal literal literal literal literal .)
+

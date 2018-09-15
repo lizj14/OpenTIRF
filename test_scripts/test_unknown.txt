@@ -1,0 +1,8 @@
+set
+    sum_size 4
+    nikending_buzhidao 3
+    end
+read_graph '..\data\180108\CVD_0.2s_0.23_300.tiff'
+    read_picture back '..\data\180108\CVD_0.2s_0.23_300_photo.jpg'
+    end
+end

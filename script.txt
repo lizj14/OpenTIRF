@@ -1,0 +1,52 @@
+set
+    sum_size 5
+    script_path 'script.txt'
+    max_pictures 150
+    background_pictures 3
+    pixel_size 150.0
+    EM_gain 300.0
+    quantum_efficiency 1.0
+    camera_gain 5.625
+    electron_creation 3.65
+    pixel_threshold 7.070
+    time_threshold 0
+    wave_length 0.000000723
+    filter_error 'on'
+    filter_sigma 'on'
+    filter_xy_difference 'off'
+    count_strange_mode 'quaternion_strategy'
+    pattern_data_mode 'x_axis_pattern'
+    point_chooser 'accuracy'
+    output_file_path '..\result\compare_for_Pt_redo_2\'
+    input_file_path '..\data\180523\'
+    time_line_mode 'central_point_selector'
+    filter_type 'square'
+    fit_function '2D_Gaussian'
+    fit_method 'Levenberg-Marquardt'
+    low_threshold 2.0
+    high_threshold 4.0
+    error_low_limit 0.25
+    error_high_limit 4.0
+    sigma_low_limit 0.25
+    sigma_high_limit 4.0
+    end
+
+scatter new_scatter
+    scatter_mode 'normal'
+    mark_alpha 80
+    mark_size 4
+    mark_shape 'cross'
+    scatter_bin 1
+    mark_color 'red'
+    end
+
+read_picture back_after 'after_TIRF_03_without_photo.tif'
+
+read_graph 'after_TIRF_03_with_0.05s_2.tif'
+    fit data_after_02 180 240 300 305 0 2000
+    end
+write_molecule data_after_02 'data_after_02.csv'
+mark back_after data_after_02 new_scatter 'mark_after_02'
+mark back_after data_after_02 new_scatter 'mark_test' 0 20
+
+end

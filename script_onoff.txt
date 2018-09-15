@@ -1,0 +1,127 @@
+set
+    sum_size 5
+    script_path 'script.txt'
+    max_pictures 150
+    background_pictures 3
+    pixel_size 150.0
+    EM_gain 300.0
+    quantum_efficiency 1.0
+    camera_gain 5.625
+    electron_creation 3.65
+    pixel_threshold 7.070
+    time_threshold 0
+    wave_length 0.000000723
+    filter_error 'on'
+    filter_sigma 'on'
+    filter_xy_difference 'off'
+    count_strange_mode 'quaternion_strategy'
+    pattern_data_mode 'x_axis_pattern'
+    point_chooser 'accuracy'
+    output_file_path '../result/on_off_analysis_new/'
+    input_file_path '../data/180627_onoff/'
+    time_line_mode 'central_point_selector'
+    filter_type 'square'
+    fit_function '2D_Gaussian'
+    fit_method 'Levenberg-Marquardt'
+    low_threshold 2.0
+    high_threshold 4.0
+    error_low_limit 0.25
+    error_high_limit 4.0
+    sigma_low_limit 0.25
+    sigma_high_limit 4.0
+    end
+
+scatter red_scatter
+    scatter_mode 'normal'
+    mark_alpha 80
+    mark_size 4
+    mark_shape 'cross'
+    scatter_bin 1
+    mark_color 'red'
+    end
+
+scatter green_scatter
+    scatter_mode 'normal'
+    mark_alpha 80
+    mark_size 4
+    mark_shape 'cross'
+    scatter_bin 1
+    mark_color 'green'
+    end
+
+scatter yellow_scatter
+    scatter_mode 'normal'
+    mark_alpha 80
+    mark_size 4
+    mark_shape 'cross'
+    scatter_bin 1
+    mark_color 'yellow'
+    end
+
+read_picture picture_back 'back.tif'
+read_molecule data_in 'data.csv'
+
+polygon MoS 0.0 0.0 0.0 121.0 239.0 377.0 512.0 62.0 512.0 0.0
+polygon BackDic0 0.0 121.0 0.0 512.0 239.0 512.0 239.0 377.0
+polygon BackDic1 239.0 512.0 512.0 512.0 512.0 62.0 239.0 377.0
+
+circle cir_in_0 199.0 189.0 5.0
+circle cir_in_1 157.0 162.0 5.0
+circle cir_in_2 367.0 79.0 5.0
+circle cir_in_3 280.0 103.0 5.0
+circle cir_in_4 280.0 287.0 5.0
+circle cir_in_5 330.0 246.0 5.0
+circle cir_in_6 309.0 274.0 5.0
+circle cir_in_7 160.0 194.0 5.0
+circle cir_in_8 297.0 124.0 5.0
+circle cir_in_9 262.0 158.0 5.0
+
+circle cir_out_0 315.0 344.0 5.0
+circle cir_out_1 270.0 376.0 5.0
+circle cir_out_2 352.0 422.0 5.0
+circle cir_out_3 213.0 385.0 5.0
+circle cir_out_4 162.0 364.0 5.0
+circle cir_out_5 305.0 404.0 5.0
+circle cir_out_6 300.0 473.0 5.0
+circle cir_out_7 319.0 470.0 5.0
+circle cir_out_8 389.0 491.0 5.0
+circle cir_out_9 431.0 477.0 5.0
+
+filter data_in data_MoS MoS
+filter data_in data_back0 BackDic0
+filter data_in data_back1 BackDic1
+
+mark picture_back 'mark' data_in red_scatter end
+mark picture_back 'mark_new'
+        data_MoS red_scatter
+        data_back0 green_scatter
+        data_back1 yellow_scatter
+        end
+
+write_molecule data_MoS 'data_MoS.csv'
+write_molecule data_back0 'data_back_green.csv'
+write_molecule data_back1 'data_back_yellow.csv'
+
+district_analyze data_in cir_in_0 'on_off_in_0.csv' 0 2000
+district_analyze data_in cir_in_1 'on_off_in_1.csv' 0 2000
+district_analyze data_in cir_in_2 'on_off_in_2.csv' 0 2000
+district_analyze data_in cir_in_3 'on_off_in_3.csv' 0 2000
+district_analyze data_in cir_in_4 'on_off_in_4.csv' 0 2000
+district_analyze data_in cir_in_5 'on_off_in_5.csv' 0 2000
+district_analyze data_in cir_in_6 'on_off_in_6.csv' 0 2000
+district_analyze data_in cir_in_7 'on_off_in_7.csv' 0 2000
+district_analyze data_in cir_in_8 'on_off_in_8.csv' 0 2000
+district_analyze data_in cir_in_9 'on_off_in_9.csv' 0 2000
+
+district_analyze data_in cir_out_0 'on_off_out_0.csv' 0 2000
+district_analyze data_in cir_out_1 'on_off_out_1.csv' 0 2000
+district_analyze data_in cir_out_2 'on_off_out_2.csv' 0 2000
+district_analyze data_in cir_out_3 'on_off_out_3.csv' 0 2000
+district_analyze data_in cir_out_4 'on_off_out_4.csv' 0 2000
+district_analyze data_in cir_out_5 'on_off_out_5.csv' 0 2000
+district_analyze data_in cir_out_6 'on_off_out_6.csv' 0 2000
+district_analyze data_in cir_out_7 'on_off_out_7.csv' 0 2000
+district_analyze data_in cir_out_8 'on_off_out_8.csv' 0 2000
+district_analyze data_in cir_out_9 'on_off_out_9.csv' 0 2000
+
+end

@@ -1,0 +1,71 @@
+set
+    sum_size 5
+    script_path 'script.txt'
+    max_pictures 150
+    background_pictures 3
+    pixel_size 260.0
+    EM_gain 300.0
+    quantum_efficiency 0.9
+    camera_gain 5.625
+    electron_creation 3.65
+    pixel_threshold 7.070
+    time_threshold 0
+    wave_length 0.000000532
+    filter_error 'on'
+    filter_sigma 'on'
+    filter_xy_difference 'off'
+    count_strange_mode 'quaternion_strategy'
+    pattern_data_mode 'x_axis_pattern'
+    point_chooser 'accuracy'
+    output_file_path '..\result\compare_for_Pt_aid\'
+    input_file_path '..\data\180522\'
+    time_line_mode 'central_point_selector'
+    filter_type 'square'
+    fit_function '2D_Gaussian'
+    fit_method 'Levenberg-Marquardt'
+    low_threshold 2.0
+    high_threshold 4.0
+    error_low_limit 0.25
+    error_high_limit 4.0
+    sigma_low_limit 0.25
+    sigma_high_limit 4.0
+    end
+
+polygon poly1 185.0 235.0 185.0 300.0 295.0 300.0 295.0 235.0 
+
+read_picture back_before 'boli_before_03_100_photo.tif'
+read_graph 'before_01.tif'
+    time_line poly1 'time_line_before_1.csv'
+    end
+
+read_graph 'before_02.tif'
+    time_line poly1 'time_line_before_2.csv'
+    end
+
+set
+    input_file_path '..\data\180523\'
+    end
+
+polygon poly2 180.0 240.0 180.0 305.0 300.0 305.0 300.0 240.0
+
+read_graph 'after_TIRF_03_without_0.05s.tif'
+    time_line poly2 'time_line_after_without.csv'
+    end
+
+read_graph 'after_TIRF_03_with_0.05s.tif'
+    time_line poly2 'time_line_after_1.csv'
+    end
+
+read_graph 'after_TIRF_03_with_0.05s_2.tif'
+    time_line poly2 'time_line_after_2.csv'
+    end
+
+read_graph 'after_TIRF_03_with_0.05s_3.tif'
+    time_line poly2 'time_line_after_3.csv'
+    end
+
+read_graph 'after_TIRF_03_with_0.05s_4.tif'
+    time_line poly2 'time_line_after_4.csv'
+    end
+
+end

@@ -1,0 +1,25 @@
+set
+    sum_size 4
+    end
+read_graph 'frame' 'f:\research_pro\Catalysis\data\180108\CVD_0.2s_0.23_300.tiff'
+    set sum_size 5
+        low_threshold 3.0
+        end
+    fit data_1
+    set sum_size 6
+        low_threshold 2.0
+        end
+    fit data_2
+    end
+write_molecule data_1 'f:\research_pro\Catalysis\result1.csv'
+write_molecule data_2 'f:\research_pro\Catalysis\result2.csv'
+scatter scatter_1 
+    color 'red'
+    size 5
+    end
+read_picture back 'f:\research_pro\Catalysis\data\180108\CVD_0.2s_0.23_300_photo.jpg'
+read_molecule data_3 'f:\research_pro\Catalysis\result1.csv'
+mark back data_1 scatter_1 'pic1.png'
+mark back data_1 scatter_1 'pic1_way2.png' 2
+mark back data_1 scatter_1 'pic1_way3.png' 3 4
+end

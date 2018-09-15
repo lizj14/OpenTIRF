@@ -1,0 +1,57 @@
+set
+    sum_size 5
+    script_path 'script.txt'
+    max_pictures 150
+    background_pictures 3
+    pixel_size 260.0
+    EM_gain 300.0
+    quantum_efficiency 0.9
+    camera_gain 5.625
+    electron_creation 3.65
+    pixel_threshold 7.070
+    time_threshold 0
+    wave_length 0.000000532
+    filter_error 'on'
+    filter_sigma 'on'
+    filter_xy_difference 'off'
+    count_strange_mode 'quaternion_strategy'
+    pattern_data_mode 'x_axis_pattern'
+    point_chooser 'accuracy'
+    output_file_path '..\test\test_two_script\01\'
+    input_file_path '..\data\180418_test_two_script\'
+    filter_type 'square'
+    fit_function '2D_Gaussian'
+    fit_method 'Levenberg-Marquardt'
+    low_threshold 1.5
+    high_threshold 3.0
+    error_low_limit 0.25
+    error_high_limit 4.0
+    sigma_low_limit 0.25
+    sigma_high_limit 4.0
+    end
+read_graph 'zhou_1.08_300_0.02s_1.tif'
+    fit data_from_fit
+end
+read_picture back 'zhou_1.08_300_0.02s_photo_1.tif'
+scatter new_scatter
+    scatter_mode 'normal'
+    mark_alpha 80
+    mark_size 2
+    mark_shape 'cross'
+    scatter_bin 1
+    mark_color 'red'
+    end
+write_molecule data_from_fit 'out_zhou_1.08_300_0.02s_1.csv'
+mark back data_from_fit new_scatter 'mark'
+mark back data_from_fit new_scatter 'out_zhou_1.08_300_0.02s_1' 0 3000 1
+set
+    output_file_path '..\test\test_two_script\02\'
+end
+read_graph 'zhou_1.08_300_0.02s_2.tif'
+    fit data_from_fit1
+end
+read_picture back1 'zhou_1.08_300_0.02s_photo_2.tif'
+write_molecule data_from_fit1 'out_zhou_1.08_300_0.02s_2.csv'
+mark back data_from_fit new_scatter 'mark'
+mark back data_from_fit new_scatter 'out_zhou_1.08_300_0.02s_2' 0 3000 1
+end

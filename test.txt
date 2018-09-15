@@ -1,0 +1,57 @@
+set
+    sum_size 5
+    script_path 'script.txt'
+    max_pictures 150
+    background_pictures 3
+    pixel_size 260.0
+    EM_gain 300.0
+    quantum_efficiency 0.9
+    camera_gain 5.625
+    electron_creation 3.65
+    pixel_threshold 7.070
+    time_threshold 0
+    wave_length 0.000000532
+    filter_error 'on'
+    filter_sigma 'on'
+    filter_xy_difference 'off'
+    count_strange_mode 'quaternion_strategy'
+    pattern_data_mode 'x_axis_pattern'
+    point_chooser 'accuracy'
+    output_file_path '..\test\test_time_line_on_off_better_output\'
+    input_file_path '..\data\180407_test_of_big_data\'
+    time_line_mode 'central_point_selector'
+    end
+polygon poly1 463.0 340.0 468.0 340.0 468.0 346.0 463.0 346.0
+circle cir1 465.0 344.0 5.0
+read_graph 'CVD_0.2s_0.23_300.tiff'
+    set
+	filter_type 'square'
+	fit_function '2D_Gaussian'
+	fit_method 'Levenberg-Marquardt'
+	low_threshold 1.5
+	high_threshold 3.0
+        error_low_limit 0.25
+        error_high_limit 4.0
+	sigma_low_limit 0.25
+        sigma_high_limit 4.0
+    end
+    fit data_from_fit 400 300 500 400 
+    time_line poly1 'time_line_poly1.csv'
+    time_line cir1 'time_line_circle1.csv'
+end
+read_picture back 'CVD_0.2s_0.23_300_photo.jpg'
+scatter new_scatter
+    scatter_mode 'normal'
+    mark_alpha 80
+    mark_size 4
+    mark_shape 'cross'
+    scatter_bin 1
+    mark_color 'red'
+    end
+write_molecule data_from_fit 'data_compare.csv'
+mark back data_from_fit new_scatter 'mark'
+mark back data_from_fit new_scatter 'mark_pages_set' 0 50 1
+district_analyze data_from_fit poly1 'district_analyze_poly1_0_150.csv' 0 150
+district_analyze data_from_fit poly1 'district_analyze_poly1_0_300.csv' 0 300
+district_analyze data_from_fit cir1 'district_analyze_cir1_0_150.csv' 0 150
+end
